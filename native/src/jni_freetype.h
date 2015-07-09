@@ -7,6 +7,22 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_Init_FreeType
+ * Signature: ([J)I
+ */
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Init_1FreeType
+  (JNIEnv *, jobject, jlongArray);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_Done_FreeType
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Done_1FreeType
+  (JNIEnv *, jobject, jlong);
+
 #ifdef __cplusplus
 }
 #endif
