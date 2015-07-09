@@ -1,0 +1,15 @@
+.classpath
+.project
+.settings
+bin/
+build/
+.gradle/
+Debug/
+Release/
+x64/
+ipch/
+*.filters
+*.opensdf
+*.sdf
+*.suo
+*.user

@@ -1,0 +1,168 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
+sourceCompatibility = 1.7
+
+repositories {
+	mavenCentral()
+}
+
+sourceSets {
+	main {
+		java {
+			srcDir 'java/src/main/java'
+		}
+		resources {
+			srcDir 'java/src/main/resources'
+		}
+	}
+	test {
+		java {
+			srcDir 'java/src/test/java'
+		}
+		resources {
+			srcDir 'java/src/test/resources'
+		}
+	}
+}
+
+task nativeGenHeaders {
+	description "Uses javah to regenerate the JNI header files"
+	inputs.file sourceSets.main.output.asFileTree.matching {
+		include 'com/tinytimrob/jfreetype2/JNIFreeType.class'
+	}
+	outputs.file 'native/src/jni_freetype.h'
+	doLast {
+		ant.javah(class: 'com.tinytimrob.jfreetype2.JNIFreeType', outputFile: 'native/src/jni_freetype.h', classpath:sourceSets.main.output.asPath)
+	}
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+	classifier = 'javadoc'
+	from javadoc.destinationDir
+}
+
+task nativeJars {
+	description "Builds all native jars"
+}
+
+def platforms = ['win32', 'win64', 'osx', 'linux32', 'linux64']
+platforms.each { platform ->
+	task "nativeJar_${platform}"(type: Jar) {
+		classifier = "natives-$platform"
+		description "Bundles natives for $platform"
+		from "native/lib/$platform", "native/prebuilt/$platform"
+		include '*.dll', '*.dylib', '*.jnilib', '*.so', '*.so.*'
+	}
+	nativeJars.dependsOn "nativeJar_${platform}"
+}
+
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			groupId 'com.tinytimrob'
+			artifactId 'jfreetype2'
+			version '0.1-SNAPSHOT'
+			
+			pom.withXml {
+				asNode().children().last() + {
+					name 'JFreeType2'
+					inceptionYear '2015'
+				}
+				def dependenciesNode = asNode().appendNode('dependencies')
+				platforms.each { platform ->
+					def dependencyNode = dependenciesNode.appendNode('dependency')
+					dependencyNode.appendNode('groupId', '${project.groupId}')
+					dependencyNode.appendNode('artifactId', 'jfreetype2-platform')
+					dependencyNode.appendNode('version', '${project.version}')
+					dependencyNode.appendNode('classifier', "natives-$platform")
+				}
+			}
+			
+			from components.java
+			
+			artifact (javadocJar) {
+				classifier = 'javadoc'
+			}
+		}
+		mavenPlatformNatives(MavenPublication) {
+			groupId 'com.tinytimrob'
+			artifactId 'jfreetype2-platform'
+			version '0.1-SNAPSHOT'
+			
+			pom.withXml {
+				asNode().children().last() + {
+					name 'JFreeType2 Platform Natives'
+					inceptionYear '2015'
+				}
+			}
+			
+			platforms.each { platform ->
+				artifact (project.tasks["nativeJar_${platform}"]) {
+					classifier = "natives-$platform"
+				}
+			}
+		}
+	}
+}
+publishing {
+	repositories {
+		maven {
+			url "${System.env.MAVEN_PUBLISHING_LOCATION}" // the env var will be set on the buildserver to correct and current maven location
+		}
+	}
+}
+
+task verifyMavenEnvVariable << {
+	def publishingLocation = System.env.MAVEN_PUBLISHING_LOCATION
+	if (publishingLocation != null) {
+		println "Maven publishing location is: " + publishingLocation
+	}
+	else {
+		throw new GradleException('Environment variable MAVEN_PUBLISHING_LOCATION must be set in order to publish')
+	}
+}
+
+task verifyJavadocEnvVariable << {
+		def publishingLocation = System.env.JAVADOC_PUBLISHING_LOCATION
+		if (publishingLocation != null) {
+			println "Javadoc publishing location is: " + publishingLocation
+		}
+		else {
+			throw new GradleException('Environment variable JAVADOC_PUBLISHING_LOCATION must be set in order to publish')
+		}
+}
+
+task deleteOldWebDocs(type: Delete, dependsOn: [verifyMavenEnvVariable, verifyJavadocEnvVariable]) {
+delete "${System.env.JAVADOC_PUBLISHING_LOCATION}/jfreetype2/0.1/"
+}
+deleteOldWebDocs.mustRunAfter 'publishMavenJavaPublicationToMavenRepository'
+
+task copyNewWebDocs(type: Copy, dependsOn: [deleteOldWebDocs, javadoc]) {
+	into "${System.env.JAVADOC_PUBLISHING_LOCATION}/jfreetype2/0.1/"
+	from 'build/docs/javadoc'
+}
+
+model {
+	tasks.generatePomFileForMavenJavaPublication {
+		dependsOn verifyMavenEnvVariable, verifyJavadocEnvVariable
+	}
+	
+	tasks.publishMavenJavaPublicationToMavenRepository {
+		dependsOn jar, javadocJar
+	}
+	
+	tasks.publish {
+		dependsOn copyNewWebDocs
+	}
+}
+
+// disable doclint on java 8 to ensure javadoc is built correctly
+if (JavaVersion.current().isJava8Compatible()) {
+	allprojects {
+		tasks.withType(Javadoc) {
+			options.addStringOption('Xdoclint:none', '-quiet')
+		}
+	}
+}
