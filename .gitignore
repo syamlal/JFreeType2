@@ -6,6 +6,7 @@ build/
 .gradle/
 Debug/
 Release/
+Win32/
 x64/
 ipch/
 *.filters
