@@ -293,7 +293,14 @@ public enum FreeTypeError
 	{
 		try
 		{
-			return FreeTypeError.values()[i];
+			for(FreeTypeError e : values())
+			{
+				if(e.hexValue == i)
+				{
+					return e;
+				}
+			}
+			return null;
 		}
 		catch (Throwable t)
 		{
