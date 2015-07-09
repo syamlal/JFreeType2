@@ -1,5 +1,6 @@
 package com.tinytimrob.jfreetype2;
 
+/** The FreeType error code type. A value of {@link FreeTypeError#OK} is always interpreted as a successful operation. */
 public enum FreeTypeError
 {
 	/** no error */
@@ -293,9 +294,9 @@ public enum FreeTypeError
 	{
 		try
 		{
-			for(FreeTypeError e : values())
+			for (FreeTypeError e : values())
 			{
-				if(e.hexValue == i)
+				if (e.hexValue == i)
 				{
 					return e;
 				}
