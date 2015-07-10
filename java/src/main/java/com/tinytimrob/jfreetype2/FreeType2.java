@@ -53,12 +53,8 @@ public class FreeType2
 			throw new NullPointerException("You can't free a null library");
 		}
 
-		if (!library.isAllocated())
-		{
-			throw new PointerAlreadyFreedException();
-		}
-
-		FreeTypeError result = FreeTypeError.convert(JNIFreeType.INSTANCE.FT_Done_FreeType(library.pointer));
+		long p = library.getPointer();
+		FreeTypeError result = FreeTypeError.convert(JNIFreeType.INSTANCE.FT_Done_FreeType(p));
 		return result;
 	}
 }

@@ -23,6 +23,46 @@ JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Init_1Free
 JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Done_1FreeType
   (JNIEnv *, jobject, jlong);
 
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_New_Face
+ * Signature: (JLjava/lang/String;J[J)I
+ */
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1New_1Face
+  (JNIEnv *, jobject, jlong, jstring, jlong, jlongArray);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_New_Memory_Face
+ * Signature: (JJJJ[J)I
+ */
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1New_1Memory_1Face
+  (JNIEnv *, jobject, jlong, jlong, jlong, jlong, jlongArray);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_Done_Face
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Done_1Face
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    HelperFunc_ByteDataPointer_Allocate
+ * Signature: ([B)J
+ */
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_HelperFunc_1ByteDataPointer_1Allocate
+  (JNIEnv *, jobject, jbyteArray);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    HelperFunc_ByteDataPointer_Release
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_HelperFunc_1ByteDataPointer_1Release
+  (JNIEnv *, jobject, jlong);
+
 #ifdef __cplusplus
 }
 #endif
