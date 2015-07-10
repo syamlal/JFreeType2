@@ -159,6 +159,78 @@ JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1
 JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Render_1Glyph
   (JNIEnv *, jobject, jlong, jint);
 
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_GlyphSlotRec_bitmap
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1GlyphSlotRec_1bitmap
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_GlyphSlotRec_bitmap_left
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1GlyphSlotRec_1bitmap_1left
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_GlyphSlotRec_bitmap_top
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1GlyphSlotRec_1bitmap_1top
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_GlyphSlotRec_advance_x
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1GlyphSlotRec_1advance_1x
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_GlyphSlotRec_advance_y
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1GlyphSlotRec_1advance_1y
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_Bitmap_rows
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Bitmap_1rows
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_Bitmap_width
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Bitmap_1width
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_Bitmap_pitch
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Bitmap_1pitch
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_Bitmap_buffer
+ * Signature: (J[B)V
+ */
+JNIEXPORT void JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Bitmap_1buffer
+  (JNIEnv *, jobject, jlong, jbyteArray);
+
 #ifdef __cplusplus
 }
 #endif

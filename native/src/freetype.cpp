@@ -1,6 +1,7 @@
 #include "jni_freetype.h"
 #include <ft2build.h>
 #include FT_FREETYPE_H
+#include FT_IMAGE_H
 
 JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Init_1FreeType(JNIEnv * _env, jobject _obj, jlongArray _alibrary)
 {
@@ -123,4 +124,60 @@ JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1
 JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Render_1Glyph(JNIEnv * _env, jobject _object, jlong _slot, jint _render_mode)
 {
 	return (jint)FT_Render_Glyph((FT_GlyphSlot)_slot, (FT_Render_Mode)_render_mode);
+}
+
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1GlyphSlotRec_1bitmap(JNIEnv * _env, jobject _object, jlong _pointer)
+{
+	FT_GlyphSlot glyph = (FT_GlyphSlot)_pointer;
+	return (jlong)&glyph->bitmap;
+}
+
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1GlyphSlotRec_1bitmap_1left(JNIEnv * _env, jobject _object, jlong _pointer)
+{
+	FT_GlyphSlot glyph = (FT_GlyphSlot)_pointer;
+	return (jint)glyph->bitmap_left;
+}
+
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1GlyphSlotRec_1bitmap_1top(JNIEnv * _env, jobject _object, jlong _pointer)
+{
+	FT_GlyphSlot glyph = (FT_GlyphSlot)_pointer;
+	return (jint)glyph->bitmap_top;
+}
+
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1GlyphSlotRec_1advance_1x(JNIEnv * _env, jobject _object, jlong _pointer)
+{
+	FT_GlyphSlot glyph = (FT_GlyphSlot)_pointer;
+	return (jint)glyph->advance.x;
+}
+
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1GlyphSlotRec_1advance_1y(JNIEnv * _env, jobject _object, jlong _pointer)
+{
+	FT_GlyphSlot glyph = (FT_GlyphSlot)_pointer;
+	return (jint)glyph->advance.y;
+}
+
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Bitmap_1rows(JNIEnv * _env, jobject _object, jlong _pointer)
+{
+	FT_Bitmap* bitmap = (FT_Bitmap*)_pointer;
+	return (jlong)bitmap->rows;
+}
+
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Bitmap_1width(JNIEnv * _env, jobject _object, jlong _pointer)
+{
+	FT_Bitmap* bitmap = (FT_Bitmap*)_pointer;
+	return (jlong)bitmap->width;
+}
+
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Bitmap_1pitch(JNIEnv * _env, jobject _object, jlong _pointer)
+{
+	FT_Bitmap* bitmap = (FT_Bitmap*)_pointer;
+	return (jint)bitmap->pitch;
+}
+
+JNIEXPORT void JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Bitmap_1buffer(JNIEnv * _env, jobject _object, jlong _pointer, jbyteArray _array)
+{
+	FT_Bitmap* bitmap = (FT_Bitmap*)_pointer;
+	int len = _env->GetArrayLength(_array);
+	unsigned char* c = bitmap->buffer;
+	_env->SetByteArrayRegion(_array, 0, len, reinterpret_cast<jbyte*>(c));
 }

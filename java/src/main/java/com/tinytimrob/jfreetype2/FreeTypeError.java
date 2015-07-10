@@ -277,7 +277,7 @@ public enum FreeTypeError
 	CORRUPTED_FONT_GLYPHS(0xBA, "Font glyphs corrupted or missing fields");
 
 	final int hexValue;
-	final String description;
+	public final String description;
 
 	FreeTypeError(int hexValue, String description)
 	{

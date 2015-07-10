@@ -29,4 +29,58 @@ public class FreeTypeGlyphSlot extends CNativeFreeTypeObject
 		long pointer = this.getPointer();
 		return FreeTypeError.convert(JNIFreeType.INSTANCE.FT_Render_Glyph(pointer, render_mode.ordinal()));
 	}
+
+	/** This field is used as a bitmap descriptor when the slot format is FT_GLYPH_FORMAT_BITMAP. Note that the address and content of the bitmap buffer can
+	 * change between calls of {@link FreeTypeFace#loadGlyph} and a few other functions.
+	 * 
+	 * @return The current bitmap descriptor
+	 */
+	public FreeTypeBitmap getBitmap()
+	{
+		long pointer = this.getPointer();
+		long bitmapPointer = JNIFreeType.INSTANCE.FT_GlyphSlotRec_bitmap(pointer);
+		return bitmapPointer == 0 ? null : new FreeTypeBitmap(bitmapPointer);
+	}
+
+	/** The bitmap's left bearing expressed in integer pixels. Only valid if the format is FT_GLYPH_FORMAT_BITMAP, this is, if the glyph slot contains a bitmap.
+	 * 
+	 * @return The bitmap's left bearing expressed in integer pixels
+	 */
+	public int getBitmapLeft()
+	{
+		long pointer = this.getPointer();
+		return JNIFreeType.INSTANCE.FT_GlyphSlotRec_bitmap_left(pointer);
+	}
+
+	/** The bitmap's top bearing expressed in integer pixels. Remember that this is the distance from the baseline to the top-most glyph scanline, upwards y coordinates being positive.
+	 * 
+	 * @return The bitmap's top bearing expressed in integer pixels
+	 */
+	public int getBitmapTop()
+	{
+		long pointer = this.getPointer();
+		return JNIFreeType.INSTANCE.FT_GlyphSlotRec_bitmap_top(pointer);
+	}
+
+	/** This shorthand is, depending on {@link FreeTypeLoadFlags#IGNORE_TRANSFORM}, the transformed (hinted) advance width for the glyph, in 26.6 fractional pixel format. As specified with
+	 * {@link FreeTypeLoadFlags#VERTICAL_LAYOUT}, it uses either the ‘horiAdvance’ or the ‘vertAdvance’ value of ‘metrics’ field.
+	 * 
+	 * @return The horizontal x value
+	 */
+	public int getAdvanceX()
+	{
+		long pointer = this.getPointer();
+		return JNIFreeType.INSTANCE.FT_GlyphSlotRec_advance_x(pointer);
+	}
+
+	/** This shorthand is, depending on {@link FreeTypeLoadFlags#IGNORE_TRANSFORM}, the transformed (hinted) advance height for the glyph, in 26.6 fractional pixel format. As specified with
+	 * {@link FreeTypeLoadFlags#VERTICAL_LAYOUT}, it uses either the ‘horiAdvance’ or the ‘vertAdvance’ value of ‘metrics’ field.
+	 * 
+	 * @return The vertical y value
+	 */
+	public int getAdvanceY()
+	{
+		long pointer = this.getPointer();
+		return JNIFreeType.INSTANCE.FT_GlyphSlotRec_advance_y(pointer);
+	}
 }

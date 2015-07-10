@@ -6,9 +6,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import com.tinytimrob.jfreetype2.ByteDataPointer;
 import com.tinytimrob.jfreetype2.FreeType2;
+import com.tinytimrob.jfreetype2.FreeTypeBitmap;
 import com.tinytimrob.jfreetype2.FreeTypeError;
 import com.tinytimrob.jfreetype2.FreeTypeFace;
+import com.tinytimrob.jfreetype2.FreeTypeGlyphSlot;
 import com.tinytimrob.jfreetype2.FreeTypeLibrary;
+import com.tinytimrob.jfreetype2.FreeTypeLoadFlags;
+import com.tinytimrob.jfreetype2.FreeTypeRenderMode;
 
 public class TestMain
 {
@@ -53,6 +57,18 @@ public class TestMain
 			{
 				printFaceInfo(face0[0]);
 				runTest("FT_Set_Char_Size", FreeTypeError.OK, face0[0].setCharSize(0, 16 * 64, 72, 72));
+				long charIndex = face0[0].getCharIndex('j');
+				System.out.println(" --> the index of 'Q' is " + charIndex);
+				runTest("FT_Load_Glyph", FreeTypeError.OK, face0[0].loadGlyph(charIndex, FreeTypeLoadFlags.DEFAULT));
+				FreeTypeGlyphSlot glyph = face0[0].getGlyph();
+				runTest("glyph.isAllocated()", true, glyph.isAllocated());
+				runTest("FT_Render_Glyph", FreeTypeError.OK, glyph.render(FreeTypeRenderMode.NORMAL));
+				FreeTypeBitmap bitmap = glyph.getBitmap();
+				runTest("bitmap.isAllocated()", true, bitmap.isAllocated());
+
+				// bitmap info
+				printBitmapInfo(bitmap);
+
 				runTest("FT_Done_Face", FreeTypeError.OK, face0[0].done());
 			}
 
@@ -78,13 +94,35 @@ public class TestMain
 		}
 	}
 
+	private static void printBitmapInfo(FreeTypeBitmap bitmap)
+	{
+		System.out.println("*--------------------------------*");
+		long rows = 0, width = 0;
+		System.out.println("  Rows: " + (rows = bitmap.getRows()));
+		System.out.println("  Width: " + (width = bitmap.getWidth()));
+		System.out.println("  Pitch: " + bitmap.getPitch());
+		byte[] buffer = bitmap.getBuffer();
+		System.out.println("");
+		for (int i = 0; i < rows; i++)
+		{
+			String m = "";
+			for (int j = 0; j < width; j++)
+			{
+				m = m + (buffer[(int) ((i * width) + j)] != 0 ? "*" : " ");
+			}
+			System.out.println("   " + m);
+		}
+		System.out.println("");
+		System.out.println("*--------------------------------*");
+	}
+
 	public static void printFaceInfo(FreeTypeFace face)
 	{
 		System.out.println("------------------------------------------------------");
-		System.out.println("This font is '" + face.getFamilyName() + "'");
-		System.out.println("It is style '" + face.getStyleName() + "' with style flags: " + face.getStyleFlags());
-		System.out.println("It is face #" + face.getFaceIndex() + " with face flags: " + face.getFaceFlags());
-		System.out.println("In total there are " + face.getNumFaces() + " faces and " + face.getNumGlyphs() + " glyphs");
+		System.out.println("  This font is '" + face.getFamilyName() + "'");
+		System.out.println("  It is style '" + face.getStyleName() + "' with style flags: " + face.getStyleFlags());
+		System.out.println("  It is face #" + face.getFaceIndex() + " with face flags: " + face.getFaceFlags());
+		System.out.println("  In total there are " + face.getNumFaces() + " faces and " + face.getNumGlyphs() + " glyphs");
 		System.out.println("------------------------------------------------------");
 	}
 

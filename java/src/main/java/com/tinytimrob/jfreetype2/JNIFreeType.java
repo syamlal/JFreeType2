@@ -60,4 +60,26 @@ final class JNIFreeType
 	native int FT_Render_Glyph(long slot, int render_mode);
 
 	//=====================================================================================
+
+	native long FT_GlyphSlotRec_bitmap(long pointer);
+
+	native int FT_GlyphSlotRec_bitmap_left(long pointer);
+
+	native int FT_GlyphSlotRec_bitmap_top(long pointer);
+
+	native int FT_GlyphSlotRec_advance_x(long pointer);
+
+	native int FT_GlyphSlotRec_advance_y(long pointer);
+
+	//=====================================================================================
+
+	native long FT_Bitmap_rows(long pointer);
+
+	native long FT_Bitmap_width(long pointer);
+
+	native int FT_Bitmap_pitch(long pointer);
+
+	native void FT_Bitmap_buffer(long pointer, byte[] array);
+
+	//=====================================================================================
 }
