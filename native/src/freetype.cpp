@@ -119,3 +119,8 @@ JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1
 	FT_Face face = (FT_Face)_pointer;
 	return (jlong)face->glyph;
 }
+
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Render_1Glyph(JNIEnv * _env, jobject _object, jlong _slot, jint _render_mode)
+{
+	return (jint)FT_Render_Glyph((FT_GlyphSlot)_slot, (FT_Render_Mode)_render_mode);
+}

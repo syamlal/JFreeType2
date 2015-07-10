@@ -56,4 +56,8 @@ final class JNIFreeType
 	native long FT_FaceRec_glyph(long pointer);
 
 	//=====================================================================================
+
+	native int FT_Render_Glyph(long slot, int render_mode);
+
+	//=====================================================================================
 }

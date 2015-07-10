@@ -44,7 +44,7 @@ public class FreeTypeLoadFlags
 	 * This flag is implied by {@link FreeTypeLoadFlags#NO_SCALE}. */
 	public static final long NO_HINTING = (1L << 1);
 
-	/** Call FT_Render_Glyph after the glyph is loaded. By default, the glyph is rendered in {@link FreeTypeRenderMode#NORMAL} mode. This can be overridden
+	/** Call {@link FreeTypeGlyphSlot#render} after the glyph is loaded. By default, the glyph is rendered in {@link FreeTypeRenderMode#NORMAL} mode. This can be overridden
 	 * by {@link FreeTypeLoadTargetFlags} or {@link FreeTypeLoadFlags#MONOCHROME}. <br/><br/>
 	 * 
 	 * This flag is unset by {@link FreeTypeLoadFlags#NO_SCALE}. */

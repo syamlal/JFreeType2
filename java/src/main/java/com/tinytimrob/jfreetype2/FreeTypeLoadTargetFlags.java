@@ -1,6 +1,6 @@
 package com.tinytimrob.jfreetype2;
 
-/** A list of values that are used to select a specific hinting algorithm to use by the hinter. You should OR one of these values to your ‘load_flags’ when calling FT_Load_Glyph. <br/><br/>
+/** A list of values that are used to select a specific hinting algorithm to use by the hinter. You should OR one of these values to your ‘load_flags’ when calling {@link FreeTypeFace#loadGlyph}. <br/><br/>
  * 
  * Note that font's native hinters may ignore the hinting algorithm you have specified (e.g., the TrueType bytecode interpreter). You can set {@link FreeTypeLoadFlags#FORCE_AUTOHINT} to ensure that the auto-hinter is used. <br/><br/>
  * 
@@ -13,8 +13,8 @@ package com.tinytimrob.jfreetype2;
  * You can use a hinting algorithm that doesn't correspond to the same rendering mode. As an example, it is possible to use the ‘light’ hinting algorithm and have the results rendered in horizontal LCD pixel mode, with code like: <br/><br/>
  * 
  * <code>
- * FT_Load_Glyph( face, glyph_index, load_flags | FT_LOAD_TARGET_LIGHT );
- * FT_Render_Glyph( face->glyph, FT_RENDER_MODE_LCD );
+ * face.loadGlyph( glyph_index, load_flags | FreeTypeLoadTargetFlags.LIGHT );
+ * glyph.render( FreeTypeRenderMode.LCD );
  * </code>
  */
 public class FreeTypeLoadTargetFlags

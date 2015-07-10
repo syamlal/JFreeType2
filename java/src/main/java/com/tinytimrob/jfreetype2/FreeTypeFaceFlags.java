@@ -44,7 +44,7 @@ public class FreeTypeFaceFlags
 	public static final long HINTER = (1L << 11);
 
 	/** Set if the font is CID-keyed. In that case, the font is not accessed by glyph indices but by CID values. For subsetted CID-keyed fonts this has the consequence
-	 * that not all index values are a valid argument to FT_Load_Glyph. Only the CID values for which corresponding glyphs in the subsetted font exist make FT_Load_Glyph
+	 * that not all index values are a valid argument to {@link FreeTypeFace#loadGlyph}. Only the CID values for which corresponding glyphs in the subsetted font exist make {@link FreeTypeFace#loadGlyph}
 	 * return successfully; in all other cases you get an ‘FT_Err_Invalid_Argument’ error. <br/><br/>
 	 * 
 	 * Note that CID-keyed fonts that are in an SFNT wrapper don't have this flag set since the glyphs are accessed in the normal way (using contiguous indices); the

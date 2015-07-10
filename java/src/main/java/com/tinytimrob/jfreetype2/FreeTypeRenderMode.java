@@ -6,7 +6,7 @@ package com.tinytimrob.jfreetype2;
  * 
  * All modes except {@link FreeTypeRenderMode#MONO} use 256 levels of opacity. <br/><br/>
  * 
- * The LCD-optimized glyph bitmaps produced by FT_Render_Glyph can be filtered to reduce color-fringes by using FT_Library_SetLcdFilter (not active in the default builds).
+ * The LCD-optimized glyph bitmaps produced by {@link FreeTypeGlyphSlot#render} can be filtered to reduce color-fringes by using FT_Library_SetLcdFilter (not active in the default builds).
  * It is up to the caller to either call FT_Library_SetLcdFilter (if available) or do the filtering itself. <br/><br/>
  *  
  * The selected render mode only affects vector glyphs of a font. Embedded bitmaps often have a different pixel mode like FT_PIXEL_MODE_MONO. You can use FT_Bitmap_Convert

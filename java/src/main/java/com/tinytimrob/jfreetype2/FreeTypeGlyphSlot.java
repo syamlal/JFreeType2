@@ -2,10 +2,10 @@ package com.tinytimrob.jfreetype2;
 
 /** FreeType root glyph slot class structure. A glyph slot is a container where individual glyphs can be loaded, be they in outline or bitmap format. <br/><br/>
  * 
- * If FT_Load_Glyph is called with default flags (see {@link FreeTypeLoadFlags#DEFAULT}) the glyph image is loaded in the glyph slot in its native format (e.g., an
+ * If {@link FreeTypeFace#loadGlyph} is called with default flags (see {@link FreeTypeLoadFlags#DEFAULT}) the glyph image is loaded in the glyph slot in its native format (e.g., an
  * outline glyph for TrueType and Type 1 formats). <br/><br/>
  * 
- * This image can later be converted into a bitmap by calling FT_Render_Glyph. This function finds the current renderer for the native image's format, then invokes it. <br/><br/>
+ * This image can later be converted into a bitmap by calling {@link FreeTypeGlyphSlot#render}. This function finds the current renderer for the native image's format, then invokes it. <br/><br/>
  * 
  * The renderer is in charge of transforming the native image through the slot's face transformation fields, then converting it into a bitmap that is returned in ‘slot->bitmap’. <br/><br/>
  * 
@@ -17,5 +17,16 @@ public class FreeTypeGlyphSlot extends CNativeFreeTypeObject
 	FreeTypeGlyphSlot(long pointer)
 	{
 		super(pointer);
+	}
+
+	/** Convert a given glyph image to a bitmap. It does so by inspecting the glyph image format, finding the relevant renderer, and invoking it. 
+	 * 
+	 * @param render_mode This is the render mode used to render the glyph image into a bitmap. See {@link FreeTypeRenderMode} for a list of possible values.
+	 * @return FreeType error code. {@link FreeTypeError#OK} means success.
+	 */
+	public FreeTypeError render(FreeTypeRenderMode render_mode)
+	{
+		long pointer = this.getPointer();
+		return FreeTypeError.convert(JNIFreeType.INSTANCE.FT_Render_Glyph(pointer, render_mode.ordinal()));
 	}
 }

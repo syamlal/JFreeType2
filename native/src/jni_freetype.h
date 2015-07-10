@@ -151,6 +151,14 @@ JNIEXPORT jstring JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec
 JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1glyph
   (JNIEnv *, jobject, jlong);
 
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_Render_Glyph
+ * Signature: (JI)I
+ */
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Render_1Glyph
+  (JNIEnv *, jobject, jlong, jint);
+
 #ifdef __cplusplus
 }
 #endif
