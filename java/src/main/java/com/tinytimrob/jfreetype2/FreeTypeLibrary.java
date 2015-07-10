@@ -8,6 +8,18 @@ public class FreeTypeLibrary extends CNativeFreeTypeObject
 		super(pointer);
 	}
 
+	/** Destroy this FreeType library object and all of its children, including resources, drivers, faces, sizes, etc.
+	 * 
+	 * @return FreeType error code. {@link FreeTypeError#OK} means success.
+	 */
+	public FreeTypeError done()
+	{
+		long p = this.getPointer();
+		FreeTypeError result = FreeTypeError.convert(JNIFreeType.INSTANCE.FT_Done_FreeType(p));
+		this.pointer = 0;
+		return result;
+	}
+
 	/** This function opens a font by its pathname.
 	 * 
 	 * @param filepathname A path to the font file.
@@ -51,24 +63,6 @@ public class FreeTypeLibrary extends CNativeFreeTypeObject
 		long[] wrapper = new long[1];
 		FreeTypeError result = FreeTypeError.convert(JNIFreeType.INSTANCE.FT_New_Memory_Face(p, file_base_pointer, file_size, face_index, wrapper));
 		face[0] = new FreeTypeFace(wrapper[0]);
-		return result;
-	}
-
-	/** Discard a given face object, as well as all of its child slots and sizes.
-	 * 
-	 * @param face A handle to a target face object.
-	 * @return FreeType error code. {@link FreeTypeError#OK} means success.
-	 */
-	public FreeTypeError doneFace(FreeTypeFace face)
-	{
-		if (face == null)
-		{
-			throw new NullPointerException("You can't free a null face");
-		}
-
-		long p = face.getPointer();
-		FreeTypeError result = FreeTypeError.convert(JNIFreeType.INSTANCE.FT_Done_Face(p));
-		face.pointer = 0;
 		return result;
 	}
 }

@@ -143,6 +143,14 @@ JNIEXPORT jstring JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec
 JNIEXPORT jstring JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1style_1name
   (JNIEnv *, jobject, jlong);
 
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_FaceRec_glyph
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1glyph
+  (JNIEnv *, jobject, jlong);
+
 #ifdef __cplusplus
 }
 #endif

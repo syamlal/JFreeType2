@@ -43,22 +43,4 @@ public class FreeType2
 		alibrary[0] = new FreeTypeLibrary(wrapper[0]);
 		return result;
 	}
-
-	/** Destroy a given FreeType library object and all of its children, including resources, drivers, faces, sizes, etc.
-	 * 
-	 * @param library A handle to the target library object.
-	 * @return FreeType error code. {@link FreeTypeError#OK} means success.
-	 */
-	public static FreeTypeError doneFreeType(FreeTypeLibrary library)
-	{
-		if (library == null)
-		{
-			throw new NullPointerException("You can't free a null library");
-		}
-
-		long p = library.getPointer();
-		FreeTypeError result = FreeTypeError.convert(JNIFreeType.INSTANCE.FT_Done_FreeType(p));
-		library.pointer = 0;
-		return result;
-	}
 }

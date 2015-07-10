@@ -53,7 +53,7 @@ public class TestMain
 			{
 				printFaceInfo(face0[0]);
 				runTest("FT_Set_Char_Size", FreeTypeError.OK, face0[0].setCharSize(0, 16 * 64, 72, 72));
-				runTest("FT_Done_Face", FreeTypeError.OK, library0[0].doneFace(face0[0]));
+				runTest("FT_Done_Face", FreeTypeError.OK, face0[0].done());
 			}
 
 			try
@@ -64,7 +64,7 @@ public class TestMain
 				if (runTest("FT_New_Memory_Face", FreeTypeError.OK, library0[0].newMemoryFace(byteDataPointer, data.length, 0, face0)))
 				{
 					printFaceInfo(face0[0]);
-					runTest("FT_Done_Face", FreeTypeError.OK, library0[0].doneFace(face0[0]));
+					runTest("FT_Done_Face", FreeTypeError.OK, face0[0].done());
 				}
 				byteDataPointer.release();
 			}
@@ -74,7 +74,7 @@ public class TestMain
 				minisleep();
 			}
 
-			runTest("FT_Done_FreeType", FreeTypeError.OK, FreeType2.doneFreeType(library0[0]));
+			runTest("FT_Done_FreeType", FreeTypeError.OK, library0[0].done());
 		}
 	}
 

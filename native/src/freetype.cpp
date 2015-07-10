@@ -114,3 +114,8 @@ JNIEXPORT jstring JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec
 	return f == NULL ? NULL : _env->NewStringUTF(f);
 }
 
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1glyph(JNIEnv * _env, jobject _object, jlong _pointer)
+{
+	FT_Face face = (FT_Face)_pointer;
+	return (jlong)face->glyph;
+}

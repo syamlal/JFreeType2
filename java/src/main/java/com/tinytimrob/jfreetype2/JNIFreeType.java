@@ -53,5 +53,7 @@ final class JNIFreeType
 
 	native String FT_FaceRec_style_name(long pointer);
 
+	native long FT_FaceRec_glyph(long pointer);
+
 	//=====================================================================================
 }

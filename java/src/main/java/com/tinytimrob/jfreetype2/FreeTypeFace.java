@@ -3,9 +3,23 @@ package com.tinytimrob.jfreetype2;
 /** A handle to a given typographic face object. A face object models a given typeface, in a given style. */
 public class FreeTypeFace extends CNativeFreeTypeObject
 {
+	FreeTypeGlyphSlot glyph = null; // cached glyph slot object
+
 	FreeTypeFace(long pointer)
 	{
 		super(pointer);
+	}
+
+	/** Discard this face object, as well as all of its child slots and sizes.
+	 * 
+	 * @return FreeType error code. {@link FreeTypeError#OK} means success.
+	 */
+	public FreeTypeError done()
+	{
+		long p = this.getPointer();
+		FreeTypeError result = FreeTypeError.convert(JNIFreeType.INSTANCE.FT_Done_Face(p));
+		this.pointer = 0;
+		return result;
 	}
 
 	/** This function requests the nominal size (in points). <br/><br/>
@@ -72,6 +86,22 @@ public class FreeTypeFace extends CNativeFreeTypeObject
 	{
 		long pointer = this.getPointer();
 		return FreeTypeError.convert(JNIFreeType.INSTANCE.FT_Load_Glyph(pointer, glyph_index, load_flags));
+	}
+
+	/** The face's associated glyph slot(s).
+	 * 
+	 * @return The face's associated glyph slot(s)
+	 */
+	public FreeTypeGlyphSlot getGlyph()
+	{
+		if (this.glyph == null || !this.glyph.isAllocated())
+		{
+			long pointer = this.getPointer();
+			long slotPointer = JNIFreeType.INSTANCE.FT_FaceRec_glyph(pointer);
+			this.glyph = slotPointer == 0 ? null : new FreeTypeGlyphSlot(slotPointer);
+		}
+
+		return this.glyph;
 	}
 
 	/** The index of the face in the font file. It is set to 0 if there is only one face in the font file.
