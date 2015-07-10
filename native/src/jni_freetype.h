@@ -81,6 +81,14 @@ JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Get_1Char
 
 /*
  * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_Load_Glyph
+ * Signature: (JJJ)I
+ */
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Load_1Glyph
+  (JNIEnv *, jobject, jlong, jlong, jlong);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
  * Method:    FT_FaceRec_num_faces
  * Signature: (J)J
  */

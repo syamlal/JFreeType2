@@ -35,6 +35,8 @@ final class JNIFreeType
 
 	native long FT_Get_Char_Index(long face, long charcode);
 
+	native int FT_Load_Glyph(long face, long glyph_index, long load_flags);
+
 	//=====================================================================================
 
 	native long FT_FaceRec_num_faces(long pointer);

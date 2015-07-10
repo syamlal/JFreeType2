@@ -55,6 +55,25 @@ public class FreeTypeFace extends CNativeFreeTypeObject
 		return JNIFreeType.INSTANCE.FT_FaceRec_num_faces(pointer);
 	}
 
+	/** A function used to load a single glyph into the glyph slot of a face object. <br/><br/>
+	 * 
+	 * The loaded glyph may be transformed. See FT_Set_Transform for the details. <br/><br/>
+	 * 
+	 * For subsetted CID-keyed fonts, ‘FT_Err_Invalid_Argument’ is returned for invalid CID values (this is, for CID values that don't have a corresponding
+	 * glyph in the font). See the discussion of the {@link FreeTypeFaceFlags#CID_KEYED} flag for more details.
+	 * 
+	 * @param glyph_index The index of the glyph in the font file. For CID-keyed fonts (either in PS or in CFF format) this argument specifies the CID value.
+	 * @param load_flags A flag indicating what to load for this glyph. The {@link FreeTypeLoadFlags} constants can be used to control the glyph loading process
+	 *   (e.g., whether the outline should be scaled, whether to load bitmaps or not, whether to hint the outline, etc).
+	 *   
+	 * @return FreeType error code. {@link FreeTypeError#OK} means success.
+	 */
+	public FreeTypeError loadGlyph(long glyph_index, long load_flags)
+	{
+		long pointer = this.getPointer();
+		return FreeTypeError.convert(JNIFreeType.INSTANCE.FT_Load_Glyph(pointer, glyph_index, load_flags));
+	}
+
 	/** The index of the face in the font file. It is set to 0 if there is only one face in the font file.
 	 * 
 	 * @return The index of the face in the font file

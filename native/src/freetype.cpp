@@ -65,6 +65,11 @@ JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Get_1Char
 	return (jlong)FT_Get_Char_Index((FT_Face)_face, (FT_ULong)_charcode);
 }
 
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Load_1Glyph(JNIEnv * _env, jobject _object, jlong _face, jlong _glyph_index, jlong _load_flags)
+{
+	return (jint)FT_Load_Glyph((FT_Face)_face, (FT_UInt)_glyph_index, (FT_Int32)_load_flags);
+}
+
 JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1num_1faces(JNIEnv * _env, jobject _object, jlong _pointer)
 {
 	FT_Face face = (FT_Face)_pointer;
