@@ -54,8 +54,9 @@ public class FreeTypeFaceFlags
 	/** Set if the font is ‘tricky’, this is, it always needs the font format's native hinting engine to get a reasonable result. A typical example is the Chinese font
 	 * ‘mingli.ttf’ that uses TrueType bytecode instructions to move and scale all of its subglyphs. <br/><br/>
 	 * 
-	 * It is not possible to auto-hint such fonts using FT_LOAD_FORCE_AUTOHINT; it will also ignore FT_LOAD_NO_HINTING. You have to set both FT_LOAD_NO_HINTING and
-	 * FT_LOAD_NO_AUTOHINT to really disable hinting; however, you probably never want this except for demonstration purposes. <br/><br/>
+	 * It is not possible to auto-hint such fonts using {@link FreeTypeLoadFlags#FORCE_AUTOHINT}; it will also ignore {@link FreeTypeLoadFlags#NO_HINTING}. You have to set
+	 * both {@link FreeTypeLoadFlags#NO_HINTING} and {@link FreeTypeLoadFlags#NO_AUTOHINT} to really disable hinting; however, you probably never want this except for
+	 * demonstration purposes. <br/><br/>
 	 * 
 	 * Currently, there are about a dozen TrueType fonts in the list of tricky fonts; they are hard-coded in file ‘ttobjs.c’.*/
 	public static final long TRICKY = (1L << 13);

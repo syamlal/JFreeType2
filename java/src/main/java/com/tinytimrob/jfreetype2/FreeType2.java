@@ -19,15 +19,18 @@ public class FreeType2
 		}
 	}
 
-	/** Initialize a new FreeType library object. The set of modules that are registered by this function is determined at build time.
+	/** Initialize a new FreeType library object. The set of modules that are registered by this function is determined at build time. <br/><br/>
+	 * 
+	 * In case you want to provide your own memory allocating routines, use FT_New_Library instead, followed by a call to FT_Add_Default_Modules (or a series of calls to FT_Add_Module). <br/><br/>
+	 * 
+	 * See the documentation of {@link FreeTypeLibrary} and {@link FreeTypeFace} for multi-threading issues. <br/><br/>
+	 * 
+	 * If you need reference-counting (cf. FT_Reference_Library), use FT_New_Library and FT_Done_Library. <br/><br/>
 	 * 
 	 * @param alibrary A single-length destination array that will receive a handle to a new library object.
 	 * @return FreeType error code. {@link FreeTypeError#OK} means success.
 	 * @throws InvalidDestinationArraySizeException If the destination array length is not 1
 	 */
-	// In case you want to provide your own memory allocating routines, use FT_New_Library instead, followed by a call to FT_Add_Default_Modules (or a series of calls to FT_Add_Module).
-	// See the documentation of FT_Library and FT_Face for multi-threading issues.
-	// If you need reference-counting (cf. FT_Reference_Library), use FT_New_Library and FT_Done_Library.
 	public static FreeTypeError initFreeType(FreeTypeLibrary[] alibrary)
 	{
 		if (alibrary.length != 1)

@@ -44,7 +44,7 @@ public class FreeTypeLoadFlags
 	 * This flag is implied by {@link FreeTypeLoadFlags#NO_SCALE}. */
 	public static final long NO_HINTING = (1L << 1);
 
-	/** Call FT_Render_Glyph after the glyph is loaded. By default, the glyph is rendered in FT_RENDER_MODE_NORMAL mode. This can be overridden
+	/** Call FT_Render_Glyph after the glyph is loaded. By default, the glyph is rendered in {@link FreeTypeRenderMode#NORMAL} mode. This can be overridden
 	 * by {@link FreeTypeLoadTargetFlags} or {@link FreeTypeLoadFlags#MONOCHROME}. <br/><br/>
 	 * 
 	 * This flag is unset by {@link FreeTypeLoadFlags#NO_SCALE}. */
@@ -100,7 +100,7 @@ public class FreeTypeLoadFlags
 	/** Disable auto-hinter. See also the note below. */
 	public static final long NO_AUTOHINT = (1L << 15);
 
-	// Bits 16..19 are used by `FT_LOAD_TARGET_'
+	// Bits 16..19 are used by FreeTypeLoadTargetFlags
 
 	/** This flag is used to request loading of color embedded-bitmap images. The resulting color bitmaps, if available, will have the FT_PIXEL_MODE_BGRA format.
 	 * When the flag is not used and color bitmaps are found, they will be converted to 256-level gray bitmaps transparently. Those bitmaps will be in the
