@@ -55,6 +55,7 @@ public class FreeType2
 
 		long p = library.getPointer();
 		FreeTypeError result = FreeTypeError.convert(JNIFreeType.INSTANCE.FT_Done_FreeType(p));
+		library.pointer = 0;
 		return result;
 	}
 }
