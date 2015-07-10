@@ -54,3 +54,58 @@ JNIEXPORT void JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_HelperFunc_1By
 	char* ptr = (char*)_pointer;
 	delete[] ptr;
 }
+
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Set_1Char_1Size(JNIEnv * _env, jobject _object, jlong _face, jlong _char_width, jlong _char_height, jlong _horz_resolution, jlong _vert_resolution)
+{
+	return (jint)FT_Set_Char_Size((FT_Face)_face, (FT_F26Dot6)_char_width, (FT_F26Dot6)_char_height, (FT_UInt)_horz_resolution, (FT_UInt)_vert_resolution);
+}
+
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Get_1Char_1Index(JNIEnv * _env, jobject _object, jlong _face, jlong _charcode)
+{
+	return (jlong)FT_Get_Char_Index((FT_Face)_face, (FT_ULong)_charcode);
+}
+
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1num_1faces(JNIEnv * _env, jobject _object, jlong _pointer)
+{
+	FT_Face face = (FT_Face)_pointer;
+	return (jlong)face->num_faces;
+}
+
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1face_1index(JNIEnv * _env, jobject _object, jlong _pointer)
+{
+	FT_Face face = (FT_Face)_pointer;
+	return (jlong)face->face_index;
+}
+
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1face_1flags(JNIEnv * _env, jobject _object, jlong _pointer)
+{
+	FT_Face face = (FT_Face)_pointer;
+	return (jlong)face->face_flags;
+}
+
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1style_1flags(JNIEnv * _env, jobject _object, jlong _pointer)
+{
+	FT_Face face = (FT_Face)_pointer;
+	return (jlong)face->style_flags;
+}
+
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1num_1glyphs(JNIEnv * _env, jobject _object, jlong _pointer)
+{
+	FT_Face face = (FT_Face)_pointer;
+	return (jlong)face->num_glyphs;
+}
+
+JNIEXPORT jstring JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1family_1name(JNIEnv * _env, jobject _object, jlong _pointer)
+{
+	FT_Face face = (FT_Face)_pointer;
+	FT_String* f = face->family_name;
+	return f == NULL ? NULL : _env->NewStringUTF(f);
+}
+
+JNIEXPORT jstring JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1style_1name(JNIEnv * _env, jobject _object, jlong _pointer)
+{
+	FT_Face face = (FT_Face)_pointer;
+	FT_String* f = face->style_name;
+	return f == NULL ? NULL : _env->NewStringUTF(f);
+}
+

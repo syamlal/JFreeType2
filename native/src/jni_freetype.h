@@ -63,6 +63,78 @@ JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_HelperFunc_1B
 JNIEXPORT void JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_HelperFunc_1ByteDataPointer_1Release
   (JNIEnv *, jobject, jlong);
 
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_Set_Char_Size
+ * Signature: (JJJJJ)I
+ */
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Set_1Char_1Size
+  (JNIEnv *, jobject, jlong, jlong, jlong, jlong, jlong);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_Get_Char_Index
+ * Signature: (JJ)J
+ */
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Get_1Char_1Index
+  (JNIEnv *, jobject, jlong, jlong);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_FaceRec_num_faces
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1num_1faces
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_FaceRec_face_index
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1face_1index
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_FaceRec_face_flags
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1face_1flags
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_FaceRec_style_flags
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1style_1flags
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_FaceRec_num_glyphs
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1num_1glyphs
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_FaceRec_family_name
+ * Signature: (J)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1family_1name
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_FaceRec_style_name
+ * Signature: (J)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1style_1name
+  (JNIEnv *, jobject, jlong);
+
 #ifdef __cplusplus
 }
 #endif

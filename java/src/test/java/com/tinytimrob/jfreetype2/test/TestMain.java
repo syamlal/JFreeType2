@@ -51,6 +51,8 @@ public class TestMain
 		{
 			if (runTest("FT_New_Face", FreeTypeError.OK, library0[0].newFace(new File(ttfFile).getAbsolutePath(), 0, face0)))
 			{
+				printFaceInfo(face0[0]);
+				runTest("FT_Set_Char_Size", FreeTypeError.OK, face0[0].setCharSize(0, 16 * 64, 72, 72));
 				runTest("FT_Done_Face", FreeTypeError.OK, library0[0].doneFace(face0[0]));
 			}
 
@@ -61,6 +63,7 @@ public class TestMain
 				ByteDataPointer byteDataPointer = ByteDataPointer.allocate(data);
 				if (runTest("FT_New_Memory_Face", FreeTypeError.OK, library0[0].newMemoryFace(byteDataPointer, data.length, 0, face0)))
 				{
+					printFaceInfo(face0[0]);
 					runTest("FT_Done_Face", FreeTypeError.OK, library0[0].doneFace(face0[0]));
 				}
 				byteDataPointer.release();
@@ -73,6 +76,16 @@ public class TestMain
 
 			runTest("FT_Done_FreeType", FreeTypeError.OK, FreeType2.doneFreeType(library0[0]));
 		}
+	}
+
+	public static void printFaceInfo(FreeTypeFace face)
+	{
+		System.out.println("------------------------------------------------------");
+		System.out.println("This font is '" + face.getFamilyName() + "'");
+		System.out.println("It is style '" + face.getStyleName() + "' with style flags: " + face.getStyleFlags());
+		System.out.println("It is face #" + face.getFaceIndex() + " with face flags: " + face.getFaceFlags());
+		System.out.println("In total there are " + face.getNumFaces() + " faces and " + face.getNumGlyphs() + " glyphs");
+		System.out.println("------------------------------------------------------");
 	}
 
 	public static void minisleep()
