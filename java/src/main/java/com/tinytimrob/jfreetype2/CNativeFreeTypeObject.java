@@ -31,4 +31,14 @@ public class CNativeFreeTypeObject
 	{
 		return this.pointer != 0;
 	}
+
+	/** Returns whether this object's pointer matches with another object's pointer
+	 * 
+	 * @param other The other object
+	 * @return Whether or not the pointers match
+	 */
+	public boolean hasMatchingPointerWith(CNativeFreeTypeObject other)
+	{
+		return other != null && this.pointer == other.pointer;
+	}
 }
