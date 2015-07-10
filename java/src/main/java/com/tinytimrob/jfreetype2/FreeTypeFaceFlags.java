@@ -36,7 +36,7 @@ public class FreeTypeFaceFlags
 	public static final long GLYPH_NAMES = (1L << 9);
 
 	/** Used internally by FreeType to indicate that a face's stream was provided by the client application and should not be destroyed when
-	 * {@link FreeTypeLibrary#doneFace(FreeTypeFace)} is called. Don't read or test this flag. */
+	 * {@link FreeTypeFace#done()} is called. Don't read or test this flag. */
 	public static final long EXTERNAL_STREAM = (1L << 10);
 
 	/** Set if the font driver has a hinting machine of its own. For example, with TrueType fonts, it makes sense to use data from the SFNT ‘gasp’ table only if the
