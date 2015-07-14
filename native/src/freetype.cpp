@@ -71,6 +71,17 @@ JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Load_1Glyp
 	return (jint)FT_Load_Glyph((FT_Face)_face, (FT_UInt)_glyph_index, (FT_Int32)_load_flags);
 }
 
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Get_1Kerning(JNIEnv * _env, jobject _object, jlong _face, jlong _left_glyph, jlong _right_glyph, jint _kern_mode, jlongArray _akerning)
+{
+	FT_Vector vec;
+	jint ret = (jint)FT_Get_Kerning((FT_Face)_face, (FT_UInt)_left_glyph, (FT_UInt)_right_glyph, (FT_UInt)_kern_mode, &vec);
+	jlong a = vec.x;
+	jlong b = vec.y;
+	_env->SetLongArrayRegion(_akerning, 0, 1, &a);
+	_env->SetLongArrayRegion(_akerning, 1, 1, &b);
+	return ret;
+}
+
 JNIEXPORT jlong JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1FaceRec_1num_1faces(JNIEnv * _env, jobject _object, jlong _pointer)
 {
 	FT_Face face = (FT_Face)_pointer;

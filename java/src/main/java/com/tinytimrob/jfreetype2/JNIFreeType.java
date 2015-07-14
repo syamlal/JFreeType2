@@ -37,6 +37,8 @@ final class JNIFreeType
 
 	native int FT_Load_Glyph(long face, long glyph_index, long load_flags);
 
+	native int FT_Get_Kerning(long face, long left_glyph, long right_glyph, int kern_mode, long[] akerning);
+
 	//=====================================================================================
 
 	native long FT_FaceRec_num_faces(long pointer);

@@ -104,6 +104,26 @@ public class FreeTypeFace extends CNativeFreeTypeObject
 		return this.glyph;
 	}
 
+	/** Return the kerning vector between two glyphs of a same face.
+	 * 
+	 * @param left_glyph The index of the left glyph in the kern pair.
+	 * @param right_glyph The index of the right glyph in the kern pair.
+	 * @param kern_mode See {@link FreeTypeKerningMode} for more information. Determines the scale and dimension of the returned kerning vector.
+	 * @param akerning A double-length destination array that will receive the kerning vector. This is either in font units or in pixels (26.6 format) for scalable formats, and in pixels for fixed-sizes formats.
+	 * @return FreeType error code. {@link FreeTypeError#OK} means success.
+	 * @throws InvalidDestinationArraySizeException If the destination array length is not 2
+	 */
+	public FreeTypeError getKerning(long left_glyph, long right_glyph, FreeTypeKerningMode kern_mode, long[] akerning)
+	{
+		if (akerning.length != 2)
+		{
+			throw new InvalidDestinationArraySizeException("akerning", 2, akerning.length);
+		}
+
+		long pointer = this.getPointer();
+		return FreeTypeError.convert(JNIFreeType.INSTANCE.FT_Get_Kerning(pointer, left_glyph, right_glyph, kern_mode.ordinal(), akerning));
+	}
+
 	/** The index of the face in the font file. It is set to 0 if there is only one face in the font file.
 	 * 
 	 * @return The index of the face in the font file

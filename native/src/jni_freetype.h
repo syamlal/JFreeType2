@@ -89,6 +89,14 @@ JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Load_1Glyp
 
 /*
  * Class:     com_tinytimrob_jfreetype2_JNIFreeType
+ * Method:    FT_Get_Kerning
+ * Signature: (JJJI[J)I
+ */
+JNIEXPORT jint JNICALL Java_com_tinytimrob_jfreetype2_JNIFreeType_FT_1Get_1Kerning
+  (JNIEnv *, jobject, jlong, jlong, jlong, jint, jlongArray);
+
+/*
+ * Class:     com_tinytimrob_jfreetype2_JNIFreeType
  * Method:    FT_FaceRec_num_faces
  * Signature: (J)J
  */
