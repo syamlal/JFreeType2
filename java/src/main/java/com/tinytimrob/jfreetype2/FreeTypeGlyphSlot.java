@@ -7,10 +7,10 @@ package com.tinytimrob.jfreetype2;
  * 
  * This image can later be converted into a bitmap by calling {@link FreeTypeGlyphSlot#render}. This function finds the current renderer for the native image's format, then invokes it. <br/><br/>
  * 
- * The renderer is in charge of transforming the native image through the slot's face transformation fields, then converting it into a bitmap that is returned in ‘slot->bitmap’. <br/><br/>
+ * The renderer is in charge of transforming the native image through the slot's face transformation fields, then converting it into a bitmap that is returned in 'slot->bitmap'. <br/><br/>
  * 
- * Note that ‘slot->bitmap_left’ and ‘slot->bitmap_top’ are also used to specify the position of the bitmap relative to the current pen position (e.g., coordinates (0,0) on the baseline).
- * Of course, ‘slot->format’ is also changed to FT_GLYPH_FORMAT_BITMAP.
+ * Note that 'slot->bitmap_left' and 'slot->bitmap_top' are also used to specify the position of the bitmap relative to the current pen position (e.g., coordinates (0,0) on the baseline).
+ * Of course, 'slot->format' is also changed to FT_GLYPH_FORMAT_BITMAP.
  */
 public class FreeTypeGlyphSlot extends CNativeFreeTypeObject
 {
@@ -63,7 +63,7 @@ public class FreeTypeGlyphSlot extends CNativeFreeTypeObject
 	}
 
 	/** This shorthand is, depending on {@link FreeTypeLoadFlags#IGNORE_TRANSFORM}, the transformed (hinted) advance width for the glyph, in 26.6 fractional pixel format. As specified with
-	 * {@link FreeTypeLoadFlags#VERTICAL_LAYOUT}, it uses either the ‘horiAdvance’ or the ‘vertAdvance’ value of ‘metrics’ field.
+	 * {@link FreeTypeLoadFlags#VERTICAL_LAYOUT}, it uses either the 'horiAdvance' or the 'vertAdvance' value of 'metrics' field.
 	 * 
 	 * @return The horizontal x value
 	 */
@@ -74,7 +74,7 @@ public class FreeTypeGlyphSlot extends CNativeFreeTypeObject
 	}
 
 	/** This shorthand is, depending on {@link FreeTypeLoadFlags#IGNORE_TRANSFORM}, the transformed (hinted) advance height for the glyph, in 26.6 fractional pixel format. As specified with
-	 * {@link FreeTypeLoadFlags#VERTICAL_LAYOUT}, it uses either the ‘horiAdvance’ or the ‘vertAdvance’ value of ‘metrics’ field.
+	 * {@link FreeTypeLoadFlags#VERTICAL_LAYOUT}, it uses either the 'horiAdvance' or the 'vertAdvance' value of 'metrics' field.
 	 * 
 	 * @return The vertical y value
 	 */

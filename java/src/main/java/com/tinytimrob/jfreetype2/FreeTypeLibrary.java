@@ -1,6 +1,6 @@
 package com.tinytimrob.jfreetype2;
 
-/** A handle to a FreeType library instance. Each ‘library’ is completely independent from the others; it is the ‘root’ of a set of objects like fonts, faces, sizes, etc. */
+/** A handle to a FreeType library instance. Each 'library' is completely independent from the others; it is the 'root' of a set of objects like fonts, faces, sizes, etc. */
 public class FreeTypeLibrary extends CNativeFreeTypeObject
 {
 	FreeTypeLibrary(long pointer)

@@ -12,7 +12,7 @@ public class FreeTypeFaceFlags
 	/** Indicates that the face contains fixed-width characters (like Courier, Lucido, MonoType, etc.). */
 	public static final long FIXED_WIDTH = (1L << 2);
 
-	/** Indicates that the face uses the ‘sfnt’ storage scheme. For now, this means TrueType and OpenType. */
+	/** Indicates that the face uses the 'sfnt' storage scheme. For now, this means TrueType and OpenType. */
 	public static final long SFNT = (1L << 3);
 
 	/** Indicates that the face contains horizontal glyph metrics. This should be set for all common formats. */
@@ -22,7 +22,7 @@ public class FreeTypeFaceFlags
 	public static final long VERTICAL = (1L << 5);
 
 	/** Indicates that the face contains kerning information. If set, the kerning distance can be retrieved through the function FT_Get_Kerning.
-	 * Otherwise the function always return the vector (0,0). Note that FreeType doesn't handle kerning data from the ‘GPOS’ table (as present in some OpenType fonts). */
+	 * Otherwise the function always return the vector (0,0). Note that FreeType doesn't handle kerning data from the 'GPOS' table (as present in some OpenType fonts). */
 	public static final long KERNING = (1L << 6);
 
 	/** THIS FLAG IS DEPRECATED. DO NOT USE OR TEST IT. */
@@ -39,26 +39,26 @@ public class FreeTypeFaceFlags
 	 * {@link FreeTypeFace#done()} is called. Don't read or test this flag. */
 	public static final long EXTERNAL_STREAM = (1L << 10);
 
-	/** Set if the font driver has a hinting machine of its own. For example, with TrueType fonts, it makes sense to use data from the SFNT ‘gasp’ table only if the
+	/** Set if the font driver has a hinting machine of its own. For example, with TrueType fonts, it makes sense to use data from the SFNT 'gasp' table only if the
 	 * native TrueType hinting engine (with the bytecode interpreter) is available and active. */
 	public static final long HINTER = (1L << 11);
 
 	/** Set if the font is CID-keyed. In that case, the font is not accessed by glyph indices but by CID values. For subsetted CID-keyed fonts this has the consequence
 	 * that not all index values are a valid argument to {@link FreeTypeFace#loadGlyph}. Only the CID values for which corresponding glyphs in the subsetted font exist make {@link FreeTypeFace#loadGlyph}
-	 * return successfully; in all other cases you get an ‘FT_Err_Invalid_Argument’ error. <br/><br/>
+	 * return successfully; in all other cases you get an 'FT_Err_Invalid_Argument' error. <br/><br/>
 	 * 
 	 * Note that CID-keyed fonts that are in an SFNT wrapper don't have this flag set since the glyphs are accessed in the normal way (using contiguous indices); the
-	 * ‘CID-ness’ isn't visible to the application. */
+	 * 'CID-ness' isn't visible to the application. */
 	public static final long CID_KEYED = (1L << 12);
 
-	/** Set if the font is ‘tricky’, this is, it always needs the font format's native hinting engine to get a reasonable result. A typical example is the Chinese font
-	 * ‘mingli.ttf’ that uses TrueType bytecode instructions to move and scale all of its subglyphs. <br/><br/>
+	/** Set if the font is 'tricky', this is, it always needs the font format's native hinting engine to get a reasonable result. A typical example is the Chinese font
+	 * 'mingli.ttf' that uses TrueType bytecode instructions to move and scale all of its subglyphs. <br/><br/>
 	 * 
 	 * It is not possible to auto-hint such fonts using {@link FreeTypeLoadFlags#FORCE_AUTOHINT}; it will also ignore {@link FreeTypeLoadFlags#NO_HINTING}. You have to set
 	 * both {@link FreeTypeLoadFlags#NO_HINTING} and {@link FreeTypeLoadFlags#NO_AUTOHINT} to really disable hinting; however, you probably never want this except for
 	 * demonstration purposes. <br/><br/>
 	 * 
-	 * Currently, there are about a dozen TrueType fonts in the list of tricky fonts; they are hard-coded in file ‘ttobjs.c’.*/
+	 * Currently, there are about a dozen TrueType fonts in the list of tricky fonts; they are hard-coded in file 'ttobjs.c'.*/
 	public static final long TRICKY = (1L << 13);
 
 	/** Set if the font has color glyph tables. To access color glyphs use FT_LOAD_COLOR. */

@@ -45,13 +45,13 @@ public class FreeTypeFace extends CNativeFreeTypeObject
 	 * 
 	 *  If you use FreeType to manipulate the contents of font files directly, be aware that the glyph index returned by this function
 	 *  doesn't always correspond to the internal indices used within the file. This is done to ensure that value 0 always corresponds to the
-	 *  ‘missing glyph’. If the first glyph is not named ‘.notdef’, then for Type 1 and Type 42 fonts, ‘.notdef’ will be moved into the glyph
-	 *  ID 0 position, and whatever was there will be moved to the position ‘.notdef’ had. For Type 1 fonts, if there is no ‘.notdef’ glyph at
+	 *  'missing glyph'. If the first glyph is not named '.notdef', then for Type 1 and Type 42 fonts, '.notdef' will be moved into the glyph
+	 *  ID 0 position, and whatever was there will be moved to the position '.notdef' had. For Type 1 fonts, if there is no '.notdef' glyph at
 	 *  all, then one will be created at index 0 and whatever was there will be moved to the last index -- Type 42 fonts are considered invalid
 	 *  under this condition.
 	 * 
 	 * @param charcode The character code.
-	 * @return The glyph index. 0 means ‘undefined character code’.
+	 * @return The glyph index. 0 means 'undefined character code'.
 	 */
 	public long getCharIndex(long charcode)
 	{
@@ -73,7 +73,7 @@ public class FreeTypeFace extends CNativeFreeTypeObject
 	 * 
 	 * The loaded glyph may be transformed. See FT_Set_Transform for the details. <br/><br/>
 	 * 
-	 * For subsetted CID-keyed fonts, ‘FT_Err_Invalid_Argument’ is returned for invalid CID values (this is, for CID values that don't have a corresponding
+	 * For subsetted CID-keyed fonts, 'FT_Err_Invalid_Argument' is returned for invalid CID values (this is, for CID values that don't have a corresponding
 	 * glyph in the font). See the discussion of the {@link FreeTypeFaceFlags#CID_KEYED} flag for more details.
 	 * 
 	 * @param glyph_index The index of the glyph in the font file. For CID-keyed fonts (either in PS or in CFF format) this argument specifies the CID value.
@@ -154,7 +154,7 @@ public class FreeTypeFace extends CNativeFreeTypeObject
 		return JNIFreeType.INSTANCE.FT_FaceRec_style_flags(pointer);
 	}
 
-	/** The number of glyphs in the face. If the face is scalable and has sbits (see ‘num_fixed_sizes’), it is set to the number of outline glyphs. <br/><br/>
+	/** The number of glyphs in the face. If the face is scalable and has sbits (see 'num_fixed_sizes'), it is set to the number of outline glyphs. <br/><br/>
 	 * 
 	 * For CID-keyed fonts, this value gives the highest CID used in the font.
 	 * 
@@ -166,7 +166,7 @@ public class FreeTypeFace extends CNativeFreeTypeObject
 		return JNIFreeType.INSTANCE.FT_FaceRec_num_glyphs(pointer);
 	}
 
-	/** The face's family name. This is an ASCII string, usually in English, that describes the typeface's family (like ‘Times New Roman’, ‘Bodoni’, ‘Garamond’, etc).
+	/** The face's family name. This is an ASCII string, usually in English, that describes the typeface's family (like 'Times New Roman', 'Bodoni', 'Garamond', etc).
 	 * This is a least common denominator used to list fonts. Some formats (TrueType & OpenType) provide localized and Unicode versions of this string. Applications
 	 * should use the format specific interface to access them. Can be NULL (e.g., in fonts embedded in a PDF file). <br/><br/>
 	 * 
@@ -180,8 +180,8 @@ public class FreeTypeFace extends CNativeFreeTypeObject
 		return JNIFreeType.INSTANCE.FT_FaceRec_family_name(pointer);
 	}
 
-	/** The face's style name. This is an ASCII string, usually in English, that describes the typeface's style (like ‘Italic’, ‘Bold’, ‘Condensed’, etc).
-	 * Not all font formats provide a style name, so this field is optional, and can be set to NULL. As for ‘family_name’, some formats provide localized
+	/** The face's style name. This is an ASCII string, usually in English, that describes the typeface's style (like 'Italic', 'Bold', 'Condensed', etc).
+	 * Not all font formats provide a style name, so this field is optional, and can be set to NULL. As for 'family_name', some formats provide localized
 	 * and Unicode versions of this string. Applications should use the format specific interface to access them.
 	 * 
 	 * @return The face's style name

@@ -21,7 +21,7 @@ public class FreeTypeLoadFlags
 	 * The bitmap data can be accessed from the glyph slot (see note below). <br/><br/>
 	 * 
 	 * 2. If no embedded bitmap is searched or found, FreeType looks for a scalable outline. If one is found, it is loaded from the
-	 * font file, scaled to device pixels, then ‘hinted’ to the pixel grid in order to optimize it. The outline data can be accessed
+	 * font file, scaled to device pixels, then 'hinted' to the pixel grid in order to optimize it. The outline data can be accessed
 	 * from the glyph slot (see note below). <br/><br/>
 	 * 
 	 * Note that by default, the glyph loader doesn't render outlines into bitmaps. The following flags are used to modify this default
@@ -33,12 +33,12 @@ public class FreeTypeLoadFlags
 	 * This flag implies {@link FreeTypeLoadFlags#NO_HINTING} and {@link FreeTypeLoadFlags#NO_BITMAP}, and unsets
 	 * {@link FreeTypeLoadFlags#RENDER}. <br/><br/>
 	 * 
-	 * If the font is ‘tricky’ (see {@link FreeTypeFaceFlags#TRICKY} for more), using {@link FreeTypeLoadFlags#NO_SCALE} usually yields
+	 * If the font is 'tricky' (see {@link FreeTypeFaceFlags#TRICKY} for more), using {@link FreeTypeLoadFlags#NO_SCALE} usually yields
 	 * meaningless outlines because the subglyphs must be scaled and positioned with hinting instructions. This can be solved by loading
-	 * the font without {@link FreeTypeLoadFlags#NO_SCALE} and setting the character size to ‘font->units_per_EM’. */
+	 * the font without {@link FreeTypeLoadFlags#NO_SCALE} and setting the character size to 'font->units_per_EM'. */
 	public static final long NO_SCALE = (1L << 0);
 
-	/** Disable hinting. This generally generates ‘blurrier’ bitmap glyphs when the glyph are rendered in any of the anti-aliased modes.
+	/** Disable hinting. This generally generates 'blurrier' bitmap glyphs when the glyph are rendered in any of the anti-aliased modes.
 	 * See also the note below. <br/><br/>
 	 * 
 	 * This flag is implied by {@link FreeTypeLoadFlags#NO_SCALE}. */
@@ -54,8 +54,8 @@ public class FreeTypeLoadFlags
 	 * {@link FreeTypeLoadFlags#NO_SCALE} always sets this flag. */
 	public static final long NO_BITMAP = (1L << 3);
 
-	/** Load the glyph for vertical text layout. In particular, the ‘advance’ value in the FT_GlyphSlotRec structure is set to the ‘vertAdvance’
-	 * value of the ‘metrics’ field. <br/><br/>
+	/** Load the glyph for vertical text layout. In particular, the 'advance' value in the FT_GlyphSlotRec structure is set to the 'vertAdvance'
+	 * value of the 'metrics' field. <br/><br/>
 	 * 
 	 * In case FT_HAS_VERTICAL doesn't return true, you shouldn't use this flag currently. Reason is that in this case vertical metrics get synthesized,
 	 * and those values are not always consistent across various font formats. */
@@ -77,8 +77,8 @@ public class FreeTypeLoadFlags
 	/** Ignored. Deprecated. */
 	public static final long IGNORE_GLOBAL_ADVANCE_WIDTH = (1L << 9);
 
-	/** Indicate that the font driver should not load composite glyphs recursively. Instead, it should set the ‘num_subglyph’ and ‘subglyphs’ values of
-	 * the glyph slot accordingly, and set ‘glyph->format’ to FT_GLYPH_FORMAT_COMPOSITE. The description of subglyphs can then be accessed with
+	/** Indicate that the font driver should not load composite glyphs recursively. Instead, it should set the 'num_subglyph' and 'subglyphs' values of
+	 * the glyph slot accordingly, and set 'glyph->format' to FT_GLYPH_FORMAT_COMPOSITE. The description of subglyphs can then be accessed with
 	 * FT_Get_SubGlyph_Info. <br/><br/>
 	 * 
 	 * This flag implies {@link FreeTypeLoadFlags#NO_SCALE} and {@link FreeTypeLoadFlags#IGNORE_TRANSFORM}. */
@@ -94,7 +94,7 @@ public class FreeTypeLoadFlags
 	 * is used.*/
 	public static final long MONOCHROME = (1L << 12);
 
-	/** Indicates that the ‘linearHoriAdvance’ and ‘linearVertAdvance’ fields of FT_GlyphSlotRec should be kept in font units. See FT_GlyphSlotRec for details. */
+	/** Indicates that the 'linearHoriAdvance' and 'linearVertAdvance' fields of FT_GlyphSlotRec should be kept in font units. See FT_GlyphSlotRec for details. */
 	public static final long LINEAR_DESIGN = (1L << 13);
 
 	/** Disable auto-hinter. See also the note below. */

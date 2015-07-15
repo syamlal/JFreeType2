@@ -2,7 +2,7 @@ package com.tinytimrob.jfreetype2;
 
 /** An enumeration type that lists the render modes supported by FreeType 2. Each mode corresponds to a specific type of scanline conversion performed on the outline. <br/><br/>
  * 
- * For bitmap fonts and embedded bitmaps the ‘bitmap->pixel_mode’ field in the FT_GlyphSlotRec structure gives the format of the returned bitmap. <br/><br/>
+ * For bitmap fonts and embedded bitmaps the 'bitmap->pixel_mode' field in the FT_GlyphSlotRec structure gives the format of the returned bitmap. <br/><br/>
  * 
  * All modes except {@link FreeTypeRenderMode#MONO} use 256 levels of opacity. <br/><br/>
  * 

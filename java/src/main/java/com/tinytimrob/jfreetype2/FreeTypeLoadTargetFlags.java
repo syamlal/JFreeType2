@@ -1,16 +1,16 @@
 package com.tinytimrob.jfreetype2;
 
-/** A list of values that are used to select a specific hinting algorithm to use by the hinter. You should OR one of these values to your ‘load_flags’ when calling {@link FreeTypeFace#loadGlyph}. <br/><br/>
+/** A list of values that are used to select a specific hinting algorithm to use by the hinter. You should OR one of these values to your 'load_flags' when calling {@link FreeTypeFace#loadGlyph}. <br/><br/>
  * 
  * Note that font's native hinters may ignore the hinting algorithm you have specified (e.g., the TrueType bytecode interpreter). You can set {@link FreeTypeLoadFlags#FORCE_AUTOHINT} to ensure that the auto-hinter is used. <br/><br/>
  * 
  * Also note that {@link FreeTypeLoadTargetFlags#LIGHT} is an exception, in that it always implies {@link FreeTypeLoadFlags#FORCE_AUTOHINT}. <br/><br/>
  * 
- * You should use only one of the FreeTypeLoadTargetFlags values in your ‘load_flags’. They can't be ORed. <br/><br/>
+ * You should use only one of the FreeTypeLoadTargetFlags values in your 'load_flags'. They can't be ORed. <br/><br/>
  * 
  * If {@link FreeTypeLoadFlags#RENDER} is also set, the glyph is rendered in the corresponding mode (i.e., the mode that matches the used algorithm best). An exeption is {@link FreeTypeLoadTargetFlags#MONO} since it implies {@link FreeTypeLoadFlags#MONOCHROME}. <br/><br/>
  * 
- * You can use a hinting algorithm that doesn't correspond to the same rendering mode. As an example, it is possible to use the ‘light’ hinting algorithm and have the results rendered in horizontal LCD pixel mode, with code like: <br/><br/>
+ * You can use a hinting algorithm that doesn't correspond to the same rendering mode. As an example, it is possible to use the 'light' hinting algorithm and have the results rendered in horizontal LCD pixel mode, with code like: <br/><br/>
  * 
  * <code>
  * face.loadGlyph( glyph_index, load_flags | FreeTypeLoadTargetFlags.LIGHT );
