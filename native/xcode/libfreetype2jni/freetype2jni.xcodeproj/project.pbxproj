@@ -227,7 +227,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/Library/Java/JavaVirtualMachines/jdk1.8.0_11.jdk/Contents/Home/include,
 					/Library/Java/JavaVirtualMachines/jdk1.8.0_11.jdk/Contents/Home/include/darwin,
-					../../inc,
+					"../../freetype-2.6/include",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -249,7 +249,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/Library/Java/JavaVirtualMachines/jdk1.8.0_11.jdk/Contents/Home/include,
 					/Library/Java/JavaVirtualMachines/jdk1.8.0_11.jdk/Contents/Home/include/darwin,
-					../../inc,
+					"../../freetype-2.6/include",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -278,6 +278,7 @@
 				AEE4C91D1ABA1C56002826B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
