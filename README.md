@@ -11,11 +11,13 @@ JFreeType2 is licensed under the 3-clause BSD license.
 
 <h2>Testing</h2>
 
-This library is currently under development and has only limited testing.
+I tested this library on Windows (x86 and x64), Mac OS X (x86_64) and Ubuntu (x86_64) so far. It seems to work well enough. (Ubuntu needed LD_PRELOAD environment variable set aganst libfreetype.so in order to work. This might be a bug or an odd Linux quirk. It works fine on Windows and Mac without that.)
+
+A test project is included which you can run from Eclipse or some other reputable IDE if you want to test the library is working properly.
 
 <h2>Including JFreeType2 in a Project</h2>
 
-The project is still in flux and as such there is currently no release. Once the first work has been done, there will be an 'unstable' 0.1 snapshot release which will be made available from <b>maven.ginever.net</b> for inclusion in public projects. Here's an example on how to add it to a Gradle build script:
+The project is still in flux. There is an 'unstable' 0.1 snapshot release available from <b>maven.ginever.net</b> for inclusion in public projects, but using it isn't recommended right now. Nevertheless, here's an example on how to add it to a Gradle build script:
 
     repositories {
     	maven {
@@ -45,7 +47,11 @@ The natives are published under the <b>jfreetype2-platform</b> artifact ID and a
 
 <h2>Building it yourself</h2>
 
-Building this library is in two steps. The first step is to build the natives using the appropriate tools:
+Building this library is in three steps.
+
+The first step is to build freetype itself. This has already been done for you, so you can normally skip this. If you feel like redoing it for some reason, you can use the 'configure' and 'make' procedure to build the so/dylib (on linux/mac) or the vs2013 project to build the lib on Windows.
+
+The next step is to build the natives using the appropriate tools:
 
 * *Windows*: Use the included Visual Studio project.
 * *Mac OS X*: Use the included XCode project.
@@ -55,7 +61,7 @@ After building the natives, you need to copy them to the native/prebuilt/ folder
 
 Note that you will only be building the natives for *your platform* using this method.
 
-Once you have all the natives rebuilt, the second step is to build the Java part of the library. A Gradle build script is provided to do this. Here are the steps:
+Once you have all the natives rebuilt, the final step is to build the Java part of the library. A Gradle build script is provided to do this. Here are the steps:
 
 1. Create the Eclipse project ('gradlew eclipse')
 2. Use the test application to verify that the library is working properly
