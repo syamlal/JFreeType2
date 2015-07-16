@@ -49,7 +49,7 @@ The natives are published under the <b>jfreetype2-platform</b> artifact ID and a
 
 Building this library is in three steps.
 
-The first step is to build freetype itself. This has already been done for you, so you can normally skip this. If you feel like redoing it for some reason, you can use the 'configure' and 'make' procedure to build the so/dylib (on linux/mac) or the vs2013 project to build the lib on Windows.
+The first step is to build freetype itself. This has already been done for you, so you can normally skip this. If you feel like redoing it for some reason, you can use the 'configure' and 'make' procedure to build the so/dylib (on linux/mac) or the vs2013 project to build the lib on Windows. (Note: There is also a 'configure32' script included in order to build the 32-bit version of freetype on 64-bit Linux.)
 
 The next step is to build the natives using the appropriate tools:
 
