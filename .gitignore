@@ -17,3 +17,4 @@ ipch/
 testfile.ttf
 native/freetype-2.6/config.mk
 native/freetype-2.6/objs/
+lib/

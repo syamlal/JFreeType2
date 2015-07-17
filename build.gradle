@@ -5,6 +5,13 @@ sourceCompatibility = 1.7
 
 repositories {
 	mavenCentral()
+	maven {
+		url "http://maven.ginever.net/"
+	}
+}
+
+dependencies {
+	compile 'com.tinytimrob:jlibraryloader:0.1-SNAPSHOT'
 }
 
 sourceSets {
@@ -37,6 +44,10 @@ task nativeGenHeaders {
 	}
 }
 
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
 task javadocJar(type: Jar, dependsOn: javadoc) {
 	classifier = 'javadoc'
 	from javadoc.destinationDir
@@ -45,7 +56,6 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 task nativeJars {
 	description "Builds all native jars"
 }
-
 def platforms = ['win32', 'win64', 'osx', 'linux32', 'linux64']
 platforms.each { platform ->
 	task "nativeJar_${platform}"(type: Jar) {
@@ -57,6 +67,29 @@ platforms.each { platform ->
 	nativeJars.dependsOn "nativeJar_${platform}"
 }
 
+task getParentNatives {
+	description "Gets all parent natives"
+}
+platforms.each { platform ->
+	task "parentNative_${platform}" {
+		description "Copies natives for $platform."
+		def outputDir = "lib/natives/$platform"
+		inputs.files(configurations.compile)
+		outputs.dir(outputDir)
+		doLast {
+			copy {
+				def artifacts = configurations.compile.resolvedConfiguration.resolvedArtifacts.findAll { it.classifier == "natives-$platform" }
+				artifacts.each {
+					from zipTree(it.file)
+				}
+				into outputDir
+			}
+		}
+	}
+	getParentNatives.dependsOn "parentNative_${platform}"
+}
+eclipseClasspath.dependsOn getParentNatives
+compileJava.dependsOn getParentNatives
 
 publishing {
 	publications {

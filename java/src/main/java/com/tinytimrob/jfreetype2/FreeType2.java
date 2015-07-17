@@ -1,5 +1,7 @@
 package com.tinytimrob.jfreetype2;
 
+import com.tinytimrob.jlibraryloader.JLibraryLoader;
+
 public class FreeType2
 {
 	private FreeType2() throws UnsupportedOperationException
@@ -9,14 +11,11 @@ public class FreeType2
 
 	static
 	{
-		if (System.getProperty("os.arch").contains("64") && System.getProperty("os.name").toLowerCase().contains("win"))
+		if(!System.getProperty("os.name").toLowerCase().contains("win"))
 		{
-			System.loadLibrary("freetype2jni64");
+			JLibraryLoader.load("freetype");
 		}
-		else
-		{
-			System.loadLibrary("freetype2jni");
-		}
+		JLibraryLoader.load("freetype2jni");
 	}
 
 	/** Initialize a new FreeType library object. The set of modules that are registered by this function is determined at build time. <br/><br/>

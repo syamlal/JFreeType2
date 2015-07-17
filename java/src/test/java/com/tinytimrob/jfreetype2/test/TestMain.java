@@ -58,7 +58,7 @@ public class TestMain
 				printFaceInfo(face0[0]);
 				runTest("FT_Set_Char_Size", FreeTypeError.OK, face0[0].setCharSize(0, 16 * 64, 72, 72));
 				long charIndex = face0[0].getCharIndex('j');
-				System.out.println(" --> the index of 'Q' is " + charIndex);
+				System.out.println(" --> the index of 'j' is " + charIndex);
 				runTest("FT_Load_Glyph", FreeTypeError.OK, face0[0].loadGlyph(charIndex, FreeTypeLoadFlags.DEFAULT));
 				FreeTypeGlyphSlot glyph = face0[0].getGlyph();
 				runTest("glyph.isAllocated()", true, glyph.isAllocated());
