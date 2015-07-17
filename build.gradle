@@ -103,7 +103,7 @@ publishing {
 					name 'JFreeType2'
 					inceptionYear '2015'
 				}
-				def dependenciesNode = asNode().appendNode('dependencies')
+				def dependenciesNode = asNode().get('dependencies').last()
 				platforms.each { platform ->
 					def dependencyNode = dependenciesNode.appendNode('dependency')
 					dependencyNode.appendNode('groupId', '${project.groupId}')
