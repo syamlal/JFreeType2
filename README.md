@@ -9,9 +9,15 @@ Because this is a personal project, it's likely that to begin with, I will only 
 
 JFreeType2 is licensed under the 3-clause BSD license.
 
+FreeType itself is dual-licensed under both GNU GPL and the 'FreeType License'. See native/freetype-2.6/docs/LICENSE.TXT for details.
+
+<h2>Dependencies</h2>
+
+This project makes use of JLibraryLoader, which works around a design flaw on the Linux version of OpenJDK where library symbols are not loaded in global scope. On other platforms the JLibraryLoader mostly does nothing.
+
 <h2>Testing</h2>
 
-I tested this library on Windows (x86 and x64), Mac OS X (x86_64) and Ubuntu (x86_64) so far. It seems to work well enough. (Ubuntu needed LD_PRELOAD environment variable set aganst libfreetype.so in order to work. This might be a bug or an odd Linux quirk. It works fine on Windows and Mac without that.)
+I tested this library on Windows (x86 and x64), Mac OS X (x86_64) and Ubuntu (x86_64) so far. It seems to work well enough.
 
 A test project is included which you can run from Eclipse or some other reputable IDE if you want to test the library is working properly.
 
