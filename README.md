@@ -23,7 +23,7 @@ A test project is included which you can run from Eclipse or some other reputabl
 
 <h2>Including JFreeType2 in a Project</h2>
 
-The project is still in flux. There is an 'unstable' 0.1 snapshot release available from <b>maven.ginever.net</b> for inclusion in public projects, but using it isn't recommended right now. Nevertheless, here's an example on how to add it to a Gradle build script:
+The project is still in flux. There is an 'unstable' 0.1 release available from <b>maven.ginever.net</b> for inclusion in public projects, but using it isn't recommended right now - many features are still missing. Nevertheless, here's an example on how to add it to a Gradle build script:
 
     repositories {
     	maven {
@@ -32,7 +32,7 @@ The project is still in flux. There is an 'unstable' 0.1 snapshot release availa
     }
     
     dependencies {
-    	compile 'com.tinytimrob:jfreetype2:0.1-SNAPSHOT'
+    	compile 'com.tinytimrob:jfreetype2:0.1'
     } 
 
 And an example of in a Maven POM file:
@@ -46,7 +46,7 @@ And an example of in a Maven POM file:
         <dependency>
             <groupId>com.tinytimrob</groupId>
             <artifactId>jfreetype2</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>0.1</version>
         </dependency>
 
 The natives are published under the <b>jfreetype2-platform</b> artifact ID and appended with platform classifiers (win32, win64, osx, linux32 and linux64). They should be fetched automatically by Gradle/Maven but you will need to extract them manually to an appropriate place and add them to your java.library.path in order to make use of them. You can probably automate this without too much work; I wrote a custom Gradle task to do this in my own projects and it is fairly straightforward. For Maven, you could try using the [maven-nativedependencies-plugin](https://code.google.com/p/mavennatives/), although I have no experience with using that. Be sure to extract the natives for each platform to a separate folder, as some have clashing names.

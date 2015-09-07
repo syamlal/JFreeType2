@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-	compile 'com.tinytimrob:jlibraryloader:0.1-SNAPSHOT'
+	compile 'com.tinytimrob:jlibraryloader:1.0.0'
 }
 
 sourceSets {
@@ -96,7 +96,7 @@ publishing {
 		mavenJava(MavenPublication) {
 			groupId 'com.tinytimrob'
 			artifactId 'jfreetype2'
-			version '0.1-SNAPSHOT'
+			version '0.1'
 			
 			pom.withXml {
 				asNode().children().last() + {
@@ -122,7 +122,7 @@ publishing {
 		mavenPlatformNatives(MavenPublication) {
 			groupId 'com.tinytimrob'
 			artifactId 'jfreetype2-platform'
-			version '0.1-SNAPSHOT'
+			version '0.1'
 			
 			pom.withXml {
 				asNode().children().last() + {
