@@ -96,7 +96,7 @@ publishing {
 		mavenJava(MavenPublication) {
 			groupId 'com.tinytimrob'
 			artifactId 'jfreetype2'
-			version '0.1'
+			version '0.1.1-SNAPSHOT'
 			
 			pom.withXml {
 				asNode().children().last() + {
@@ -122,7 +122,7 @@ publishing {
 		mavenPlatformNatives(MavenPublication) {
 			groupId 'com.tinytimrob'
 			artifactId 'jfreetype2-platform'
-			version '0.1'
+			version '0.1.1-SNAPSHOT'
 			
 			pom.withXml {
 				asNode().children().last() + {
@@ -168,12 +168,12 @@ task verifyJavadocEnvVariable << {
 }
 
 task deleteOldWebDocs(type: Delete, dependsOn: [verifyMavenEnvVariable, verifyJavadocEnvVariable]) {
-delete "${System.env.JAVADOC_PUBLISHING_LOCATION}/jfreetype2/0.1/"
+delete "${System.env.JAVADOC_PUBLISHING_LOCATION}/jfreetype2/0.1.1/"
 }
 deleteOldWebDocs.mustRunAfter 'publishMavenJavaPublicationToMavenRepository'
 
 task copyNewWebDocs(type: Copy, dependsOn: [deleteOldWebDocs, javadoc]) {
-	into "${System.env.JAVADOC_PUBLISHING_LOCATION}/jfreetype2/0.1/"
+	into "${System.env.JAVADOC_PUBLISHING_LOCATION}/jfreetype2/0.1.1/"
 	from 'build/docs/javadoc'
 }
 
