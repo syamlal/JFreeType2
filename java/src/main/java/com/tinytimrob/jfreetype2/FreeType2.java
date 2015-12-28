@@ -11,7 +11,7 @@ public class FreeType2
 
 	static
 	{
-		if(!System.getProperty("os.name").toLowerCase().contains("win"))
+		if (!System.getProperty("os.name").toLowerCase().contains("win"))
 		{
 			JLibraryLoader.load("freetype");
 		}
