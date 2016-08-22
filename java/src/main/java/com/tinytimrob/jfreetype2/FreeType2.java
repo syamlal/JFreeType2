@@ -11,11 +11,14 @@ public class FreeType2
 
 	static
 	{
-		if (!System.getProperty("os.name").toLowerCase().contains("win"))
+		if (!System.getProperty("os.name").toLowerCase().contains("ios"))
 		{
-			JLibraryLoader.load("freetype");
+			if (!System.getProperty("os.name").toLowerCase().contains("win"))
+			{
+				JLibraryLoader.load("freetype");
+			}
+			JLibraryLoader.load("freetype2jni");
 		}
-		JLibraryLoader.load("freetype2jni");
 	}
 
 	/** Initialize a new FreeType library object. The set of modules that are registered by this function is determined at build time. <br/><br/>
