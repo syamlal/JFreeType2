@@ -62,7 +62,7 @@ platforms.each { platform ->
 		classifier = "natives-$platform"
 		description "Bundles natives for $platform"
 		from "native/lib/$platform", "native/prebuilt/$platform"
-		include '*.dll', '*.dylib', '*.jnilib', '*.so', '*.so.*', *.a'
+		include '*.dll', '*.dylib', '*.jnilib', '*.so', '*.so.*', '*.a'
 	}
 	nativeJars.dependsOn "nativeJar_${platform}"
 }
