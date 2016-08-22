@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE28CBB61D6B86A400D7C39C /* freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEE4C9211ABA1D37002826B3 /* freetype.cpp */; };
+		AE28CBBA1D6B86A400D7C39C /* jni_freetype.h in Headers */ = {isa = PBXBuildFile; fileRef = AEE4C9221ABA1D37002826B3 /* jni_freetype.h */; };
+		AE28CBC01D6B87A100D7C39C /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE28CBBF1D6B87A100D7C39C /* libfreetype.a */; };
 		AEE4C9271ABA1D37002826B3 /* freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEE4C9211ABA1D37002826B3 /* freetype.cpp */; };
 		AEE4C9281ABA1D37002826B3 /* jni_freetype.h in Headers */ = {isa = PBXBuildFile; fileRef = AEE4C9221ABA1D37002826B3 /* jni_freetype.h */; };
 		AEE4C92E1ABA1EFB002826B3 /* libfreetype.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE4C92C1ABA1EFB002826B3 /* libfreetype.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE28CBBE1D6B86A400D7C39C /* libfreetype2armjni.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfreetype2armjni.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE28CBBF1D6B87A100D7C39C /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = ../../lib/iphone/libfreetype.a; sourceTree = "<group>"; };
 		AEE4C9171ABA1C56002826B3 /* libfreetype2jni.jnilib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfreetype2jni.jnilib; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE4C9211ABA1D37002826B3 /* freetype.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = freetype.cpp; sourceTree = "<group>"; };
 		AEE4C9221ABA1D37002826B3 /* jni_freetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jni_freetype.h; sourceTree = "<group>"; };
@@ -20,6 +25,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AE28CBB71D6B86A400D7C39C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE28CBC01D6B87A100D7C39C /* libfreetype.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AEE4C9141ABA1C56002826B3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -34,6 +47,7 @@
 		AEE4C90E1ABA1C56002826B3 = {
 			isa = PBXGroup;
 			children = (
+				AE28CBBF1D6B87A100D7C39C /* libfreetype.a */,
 				AEE4C92B1ABA1EFB002826B3 /* osx */,
 				AEE4C9181ABA1C56002826B3 /* Products */,
 				AEE4C91E1ABA1D37002826B3 /* src */,
@@ -44,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				AEE4C9171ABA1C56002826B3 /* libfreetype2jni.jnilib */,
+				AE28CBBE1D6B86A400D7C39C /* libfreetype2armjni.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +85,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		AE28CBB91D6B86A400D7C39C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE28CBBA1D6B86A400D7C39C /* jni_freetype.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AEE4C9151ABA1C56002826B3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -81,6 +104,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		AE28CBB41D6B86A400D7C39C /* freetype2armjni */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE28CBBB1D6B86A400D7C39C /* Build configuration list for PBXNativeTarget "freetype2armjni" */;
+			buildPhases = (
+				AE28CBB51D6B86A400D7C39C /* Sources */,
+				AE28CBB71D6B86A400D7C39C /* Frameworks */,
+				AE28CBB91D6B86A400D7C39C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = freetype2armjni;
+			productName = libfreetype2jni;
+			productReference = AE28CBBE1D6B86A400D7C39C /* libfreetype2armjni.a */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
 		AEE4C9161ABA1C56002826B3 /* freetype2jni */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AEE4C91B1ABA1C56002826B3 /* Build configuration list for PBXNativeTarget "freetype2jni" */;
@@ -125,11 +165,20 @@
 			projectRoot = "";
 			targets = (
 				AEE4C9161ABA1C56002826B3 /* freetype2jni */,
+				AE28CBB41D6B86A400D7C39C /* freetype2armjni */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AE28CBB51D6B86A400D7C39C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE28CBB61D6B86A400D7C39C /* freetype.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AEE4C9131ABA1C56002826B3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -141,6 +190,58 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		AE28CBBC1D6B86A400D7C39C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				EXECUTABLE_EXTENSION = a;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Library/Java/JavaVirtualMachines/jdk1.8.0_11.jdk/Contents/Home/include,
+					/Library/Java/JavaVirtualMachines/jdk1.8.0_11.jdk/Contents/Home/include/darwin,
+					"../../freetype-2.6/include",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/Data/Mercurial/JNI/JFreeType2/native/lib/iphone,
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos9.2;
+			};
+			name = Debug;
+		};
+		AE28CBBD1D6B86A400D7C39C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				EXECUTABLE_EXTENSION = a;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Library/Java/JavaVirtualMachines/jdk1.8.0_11.jdk/Contents/Home/include,
+					/Library/Java/JavaVirtualMachines/jdk1.8.0_11.jdk/Contents/Home/include/darwin,
+					"../../freetype-2.6/include",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/Data/Mercurial/JNI/JFreeType2/native/lib/iphone,
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos9.2;
+			};
+			name = Release;
+		};
 		AEE4C9191ABA1C56002826B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -262,6 +363,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AE28CBBB1D6B86A400D7C39C /* Build configuration list for PBXNativeTarget "freetype2armjni" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE28CBBC1D6B86A400D7C39C /* Debug */,
+				AE28CBBD1D6B86A400D7C39C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AEE4C9121ABA1C56002826B3 /* Build configuration list for PBXProject "freetype2jni" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -49,7 +49,7 @@ And an example of in a Maven POM file:
             <version>0.1</version>
         </dependency>
 
-The natives are published under the <b>jfreetype2-platform</b> artifact ID and appended with platform classifiers (win32, win64, osx, linux32 and linux64). They should be fetched automatically by Gradle/Maven but you will need to extract them manually to an appropriate place and add them to your java.library.path in order to make use of them. You can probably automate this without too much work; I wrote a custom Gradle task to do this in my own projects and it is fairly straightforward. For Maven, you could try using the [maven-nativedependencies-plugin](https://code.google.com/p/mavennatives/), although I have no experience with using that. Be sure to extract the natives for each platform to a separate folder, as some have clashing names.
+The natives are published under the <b>jfreetype2-platform</b> artifact ID and appended with platform classifiers (win32, win64, osx, linux32, linux64 and ios). They should be fetched automatically by Gradle/Maven but you will need to extract them manually to an appropriate place and add them to your java.library.path in order to make use of them. You can probably automate this without too much work; I wrote a custom Gradle task to do this in my own projects and it is fairly straightforward. For Maven, you could try using the [maven-nativedependencies-plugin](https://code.google.com/p/mavennatives/), although I have no experience with using that. Be sure to extract the natives for each platform to a separate folder, as some have clashing names.
 
 <h2>Building it yourself</h2>
 
@@ -57,10 +57,12 @@ Building this library is in three steps.
 
 The first step is to build freetype itself. This has already been done for you, so you can normally skip this. If you feel like redoing it for some reason, you can use the 'configure' and 'make' procedure to build the so/dylib (on linux/mac) or the vs2013 project to build the lib on Windows. (Note: There is also a 'configure32' script included in order to build the 32-bit version of freetype on 64-bit Linux.)
 
+Building freetype for iOS can use the included ios_build.sh.
+
 The next step is to build the natives using the appropriate tools:
 
 * *Windows*: Use the included Visual Studio project.
-* *Mac OS X*: Use the included XCode project.
+* *Mac OS X and Apple iOS*: Use the included XCode project.
 * *Linux*: The 'native' folder includes a shell-script called 'build-linux.sh'.
 
 After building the natives, you need to copy them to the native/prebuilt/ folder.

@@ -56,13 +56,13 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 task nativeJars {
 	description "Builds all native jars"
 }
-def platforms = ['win32', 'win64', 'osx', 'linux32', 'linux64']
+def platforms = ['win32', 'win64', 'osx', 'linux32', 'linux64', 'ios']
 platforms.each { platform ->
 	task "nativeJar_${platform}"(type: Jar) {
 		classifier = "natives-$platform"
 		description "Bundles natives for $platform"
 		from "native/lib/$platform", "native/prebuilt/$platform"
-		include '*.dll', '*.dylib', '*.jnilib', '*.so', '*.so.*'
+		include '*.dll', '*.dylib', '*.jnilib', '*.so', '*.so.*', *.a'
 	}
 	nativeJars.dependsOn "nativeJar_${platform}"
 }
