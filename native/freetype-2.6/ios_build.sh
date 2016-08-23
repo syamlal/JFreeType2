@@ -18,7 +18,7 @@ ARCH="arm64"
 export CFLAGS="-arch $ARCH -pipe -mdynamic-no-pic -Wno-trigraphs -fpascal-strings -O2 -Wreturn-type -Wunused-variable -fmessage-length=0 -fvisibility=hidden -miphoneos-version-min=$min_iphoneos -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/include/libxml2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
 export AR="${AR_POS}"
 export LDFLAGS="-arch $ARCH -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk -miphoneos-version-min=$min_iphoneos"
-./configure --host="aarch64-apple-darwin" --enable-static=yes --enable-shared=no
+./configure --host="aarch64-apple-darwin" --enable-static=yes --enable-shared=no --without-bzip2
 make clean
 make
 mkdir -p $output_dir && cp objs/.libs/libfreetype.a "$output_dir/libfreetype-${ARCH}.a"
@@ -28,7 +28,7 @@ ARCH="armv7"
 export CFLAGS="-arch $ARCH -pipe -mdynamic-no-pic -Wno-trigraphs -fpascal-strings -O2 -Wreturn-type -Wunused-variable -fmessage-length=0 -fvisibility=hidden -miphoneos-version-min=$min_iphoneos -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/include/libxml2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
 export AR="${AR_POS}"
 export LDFLAGS="-arch $ARCH -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk -miphoneos-version-min=$min_iphoneos"
-./configure --host="armv7-apple-darwin" --enable-static=yes --enable-shared=no
+./configure --host="armv7-apple-darwin" --enable-static=yes --enable-shared=no --without-bzip2
 make clean
 make
 mkdir -p $output_dir && cp objs/.libs/libfreetype.a "$output_dir/libfreetype-${ARCH}.a"
